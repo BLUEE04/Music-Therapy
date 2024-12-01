@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Questionário - Terapia da Música{% endblock %}
+
+{% block content %}
+
+    <div class="questionnaire-container">
+
+        <h2>Questionário de Preferências Musicais</h2>
+
+        <form method="post" class="questionnaire-form">
+
+            {% csrf_token %}
+            
+            <div class="form-group">
+
+                <label for="mood">Como você está se sentindo hoje?</label>
+
+                <select name="mood" id="mood" required>
+                    <option value="">Selecione uma opção</option>
+                    <option value="feliz">Feliz</option>
+                    <option value="triste">Triste</option>
+                    <option value="energético">Energético</option>
+                    <option value="calmo">Calmo</option>
+                    <option value="ansioso">Ansioso</option>
+                </select>
+
+            </div>
+            
+            <div class="form-group">
+                <label for="energy_level">Qual seu nível de energia? (1-10)</label>
+                <input type="range" name="energy_level" id="energy_level" min="1" max="10" required>
+            </div>
+            
+            <div class="form-group">
+
+                <label>Quais gêneros musicais você prefere?</label>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" name="genres" value="rock" id="rock">
+                    <label for="rock">Rock</label>
+                    
+                    <input type="checkbox" name="genres" value="pop" id="pop">
+                    <label for="pop">Pop</label>
+                    
+                    <input type="checkbox" name="genres" value="classical" id="classical">
+                    <label for="classical">Clássica</label>
+                    
+                    <input type="checkbox" name="genres" value="jazz" id="jazz">
+                    <label for="jazz">Jazz</label>
+                </div>
+                
+            </div>
+            
+            <button type="submit" class="btn-primary">Enviar Respostas</button>
+
+        </form>
+
+    </div>
+
+{% endblock %}

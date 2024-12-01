@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+
+{% block title %}Terapia da Música - Home{% endblock %}
+
+{% block content %}
+
+<div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+
+    <ol class="carousel-indicators">
+      <li data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></li>
+      <li data-bs-target="#heroCarousel" data-bs-slide-to="1"></li>
+      <li data-bs-target="#heroCarousel" data-bs-slide-to="2"></li>
+    </ol>
+  
+    <div class="carousel-inner">
+
+      <div class="carousel-item active" style="background-image: url('/static/images/home_bg_1.jpg');">
+
+        <div class="container text-center">
+
+          <h1 class="hero-title">Bem-vindo à Terapia da Música</h1>
+          <p class="hero-text">Seu companheiro pessoal de bem-estar para suporte emocional</p>
+
+          <div class="mt-4">
+            <a href="/login" class="btn btn-primary">Entrar</a>
+            <a href="/register" class="btn btn-primary">Registar</a>
+          </div>
+
+        </div>
+
+      </div>
+  
+      <div class="carousel-item" style="background-image: url('/static/images/home_bg_2.jpg');">
+
+        <div class="container text-center">
+
+          <h1 class="hero-title">Terapia Musical Personalizada</h1>
+          <p class="hero-text">Descubra playlists calmantes e inspiradoras feitas para você</p>
+
+          <div class="mt-4">
+            <a href="/login" class="btn btn-primary">Entrar</a>
+            <a href="/register" class="btn btn-primary">Registar</a>
+          </div>
+
+        </div>
+
+      </div>
+  
+      <div class="carousel-item" style="background-image: url('/static/images/home_bg_3.jpg');">
+
+        <div class="container text-center">
+
+          <h1 class="hero-title">A sua jornada para o bem-estar</h1>
+          <p class="hero-text">Deixe a música guiá-lo ao equilíbrio emocional</p>
+
+          <div class="mt-4">
+            <a href="/login" class="btn btn-primary">Entrar</a>
+            <a href="/register" class="btn btn-primary">Registar</a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  
+    <!-- Controle de navegação (setas) -->
+
+    <!--
+    <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </a>
+
+    <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Próximo</span>
+    </a>
+    -->
+
+</div>
+  
+
+    <div class="container my-5">
+
+        <h2 class="text-center section-title">Como Funciona?</h2>
+
+        <div class="row g-4 mt-4">
+
+            <div class="col-md-4">
+
+                <div class="card h-100">
+
+                    <div class="card-body text-center">
+                        <h3 class="card-title">1. Questionário</h3>
+                        <p class="card-text">Responda um breve questionário sobre o seu humor e a sua energia.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card h-100">
+
+                    <div class="card-body text-center">
+                        <h3 class="card-title">2. Análise</h3>
+                        <p class="card-text">O nosso sistema analisa as suas respostas.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card h-100">
+
+                    <div class="card-body text-center">
+                        <h3 class="card-title">3. Playlist</h3>
+                        <p class="card-text">Receba uma playlist personalizada.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <section id="contacto" class="py-5 bg-dark text-white">
+
+        <div class="container">
+
+            <h2 class="section-title text-center">Entre em Contacto</h2>
+
+            <div class="row">
+
+                <div class="col-lg-5 mb-4">
+
+                    <div class="contact-info">
+                        <h4><i class="fas fa-envelope me-2"></i>Email</h4>
+                        <p>walter.santos.quinta5466@gmail.com</p>
+                        <h4><i class="fas fa-phone me-2"></i>Telefone</h4>
+                        <p>+351 930692021</p>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-7">
+                    
+                    <form id="contactForm" class="contact-form">
+
+                        {% csrf_token%}
+
+                        {% if form.errors %}
+                        <div class="error-messages">
+                            {% for field, errors in form.errors.items %}
+                                {% for error in errors %}
+                                    <p class="error">{{ error }}</p>
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Mensagem</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+{% endblock %}

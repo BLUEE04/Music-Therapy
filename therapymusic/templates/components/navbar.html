@@ -1,0 +1,65 @@
+{% load static %}
+
+<!-- Navigation -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <span class="text-primary">Terapia</span> da Música
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav ms-auto">
+
+                {% if user.is_authenticated %}
+
+                    <li class="nav-item">
+                        <a href="{% url 'questionnaire' %}" class="nav-link">Questionário</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{% url 'playlists' %}" class="nav-link">As Minhas Playlists</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{% url 'profile' %}" class="nav-link">Perfil</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{% url 'logout' %}" class="nav-link">Sair</a>
+                    </li>
+
+                {% else %}
+
+                    <li class="nav-item">
+                        <a href="{% url 'login' %}" class="nav-link">Entrar</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="{% url 'register' %}" class="nav-link">Registar</a>
+                    </li>
+
+                {% endif %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
